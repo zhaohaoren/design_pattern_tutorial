@@ -7,7 +7,7 @@ package factory;
  */
 public class SimpleFactory {
     // 静态工厂方法
-    public static Product getFruit(String name) {
+    public static Product getProduct(String name) {
         switch (name.toLowerCase()) {
             case "a":
                 return new ProductA();
@@ -21,7 +21,7 @@ public class SimpleFactory {
     // 这里当成客户端：我们添加一个工厂类来创建对象。
     public static void main(String[] args) {
         //可以从配置文件来配置获取什么对象
-        SimpleFactory.getFruit("a").printName();
+        SimpleFactory.getProduct("a").printName();
     }
 }
 
