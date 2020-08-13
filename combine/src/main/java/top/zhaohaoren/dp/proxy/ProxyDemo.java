@@ -1,5 +1,7 @@
 package top.zhaohaoren.dp.proxy;
 
+import net.sf.cglib.proxy.Enhancer;
+
 /**
  * 代理模式
  *
@@ -16,5 +18,11 @@ public class ProxyDemo {
         JavaProxy proxy = new JavaProxy(real);
         Subject proxyClass = (Subject) java.lang.reflect.Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Subject.class}, proxy);
         proxyClass.request();
+        System.out.println("------");
+
+        //CGLIB动态代理
+        ProxyInterceptor interceptor = new ProxyInterceptor(new CGLibRealSubject());
+        CGLibRealSubject cgLibRealSubject = (CGLibRealSubject) Enhancer.create(CGLibRealSubject.class,interceptor);
+        cgLibRealSubject.request();
     }
 }
