@@ -10,7 +10,7 @@ public abstract class AbstractClass {
     /**
      * 模板方法
      */
-    public void templateMethod() {
+    public final void templateMethod() {
         op1();
         op2();
         op3();
